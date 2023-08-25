@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_flutter_challenge/create_account_screen.dart';
 import 'package:nomad_flutter_challenge/initial_container.dart';
+import 'package:nomad_flutter_challenge/initial_warning.dart';
 
 class InitialScreen extends StatefulWidget {
   const InitialScreen({super.key});
@@ -23,6 +24,7 @@ class _InitialScreenState extends State<InitialScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
           child: Center(
         child: Padding(
@@ -72,7 +74,10 @@ class _InitialScreenState extends State<InitialScreen> {
               ),
               const SizedBox(
                 width: 500,
-                child: Divider(color: Colors.black26, thickness: 2.0),
+                child: Divider(
+                  color: Colors.black26,
+                  thickness: 2.0,
+                ),
               ),
               const SizedBox(
                 height: 10,
@@ -88,41 +93,7 @@ class _InitialScreenState extends State<InitialScreen> {
               const SizedBox(
                 height: 20,
               ),
-              EasyRichText(
-                "By signing up, you agree to our Terms, \nPrivacy Policy, and Cookie Use.",
-                defaultStyle: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                  color: Colors.black,
-                ),
-                patternList: [
-                  EasyRichTextPattern(
-                    targetString: 'Terms',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.blue.shade500,
-                    ),
-                  ),
-                  EasyRichTextPattern(
-                    targetString: 'Privacy Policy',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.blue.shade500,
-                    ),
-                  ),
-                  EasyRichTextPattern(
-                    targetString: 'Cookie Use',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.blue.shade500,
-                    ),
-                  ),
-                ],
-                textAlign: TextAlign.center,
-              ),
+              const InitialWarning(),
               const SizedBox(
                 height: 80,
               ),

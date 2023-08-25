@@ -4,8 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class InitialContainer extends StatelessWidget {
   final FaIcon? icon;
   final String method;
-  final Color bgColor;
-  final Color methodColor;
+  final Color bgColor, methodColor;
   const InitialContainer({
     super.key,
     this.icon,
