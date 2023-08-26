@@ -90,11 +90,9 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
               const SizedBox(
                 height: 40,
               ),
-              Container(
-                child: FaIcon(
-                  FontAwesomeIcons.circleCheck,
-                  color: Colors.green.shade300,
-                ),
+              FaIcon(
+                FontAwesomeIcons.circleCheck,
+                color: Colors.green.shade300,
               ),
               const SizedBox(
                 height: 40,
