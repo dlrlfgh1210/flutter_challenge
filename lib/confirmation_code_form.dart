@@ -3,9 +3,11 @@ import 'package:flutter/services.dart';
 
 class ConfirmationCodeForm extends StatelessWidget {
   final TextInputAction textInputAction;
+  final TextEditingController codeController;
   const ConfirmationCodeForm({
     super.key,
     required this.textInputAction,
+    required this.codeController,
   });
 
   @override
@@ -13,6 +15,7 @@ class ConfirmationCodeForm extends StatelessWidget {
     return SizedBox(
       width: 40,
       child: TextFormField(
+        controller: codeController,
         textInputAction: textInputAction,
         inputFormatters: [
           FilteringTextInputFormatter.digitsOnly,
