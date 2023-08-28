@@ -2,7 +2,7 @@ import 'package:easy_rich_text/easy_rich_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nomad_flutter_challenge/change_color_button.dart';
+import 'package:nomad_flutter_challenge/widget/change_color_button.dart';
 
 class CustomizeScreen extends StatefulWidget {
   const CustomizeScreen({super.key});

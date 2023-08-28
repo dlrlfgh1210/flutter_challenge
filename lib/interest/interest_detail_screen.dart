@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nomad_flutter_challenge/auth_description.dart';
-import 'package:nomad_flutter_challenge/interest_bottom_app_bar.dart';
-import 'package:nomad_flutter_challenge/interest_button.dart';
-import 'package:nomad_flutter_challenge/interest_detail_container.dart';
+import 'package:nomad_flutter_challenge/widget/auth_description.dart';
+import 'package:nomad_flutter_challenge/interest/interest_bottom_app_bar.dart';
+import 'package:nomad_flutter_challenge/widget/interest_button.dart';
+import 'package:nomad_flutter_challenge/interest/interest_detail_container.dart';
 
 const kPops = [
   "뉴진스",

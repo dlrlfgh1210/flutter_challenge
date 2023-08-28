@@ -1,9 +1,9 @@
 import 'package:easy_rich_text/easy_rich_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nomad_flutter_challenge/create_account_screen.dart';
-import 'package:nomad_flutter_challenge/initial_container.dart';
-import 'package:nomad_flutter_challenge/initial_warning.dart';
+import 'package:nomad_flutter_challenge/create_account/create_account_screen.dart';
+import 'package:nomad_flutter_challenge/widget/initial_container.dart';
+import 'package:nomad_flutter_challenge/initial/initial_warning.dart';
 
 class InitialScreen extends StatefulWidget {
   const InitialScreen({super.key});

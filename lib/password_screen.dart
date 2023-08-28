@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nomad_flutter_challenge/auth_description.dart';
-import 'package:nomad_flutter_challenge/change_color_button.dart';
-import 'package:nomad_flutter_challenge/interest_category_screen.dart';
+import 'package:nomad_flutter_challenge/widget/auth_description.dart';
+import 'package:nomad_flutter_challenge/widget/change_color_button.dart';
+import 'package:nomad_flutter_challenge/interest/interest_category_screen.dart';
 
 class PasswordScreen extends StatefulWidget {
   const PasswordScreen({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nomad_flutter_challenge/change_color_button.dart';
+import 'package:nomad_flutter_challenge/widget/change_color_button.dart';
 
 class InterestBottomAppBar extends StatelessWidget {
   const InterestBottomAppBar({super.key});

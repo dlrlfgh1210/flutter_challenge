@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nomad_flutter_challenge/auth_description.dart';
-import 'package:nomad_flutter_challenge/change_color_button.dart';
-import 'package:nomad_flutter_challenge/confirmation_code_form.dart';
+import 'package:nomad_flutter_challenge/widget/auth_description.dart';
+import 'package:nomad_flutter_challenge/widget/change_color_button.dart';
+import 'package:nomad_flutter_challenge/confirmation/confirmation_code_form.dart';
 import 'package:nomad_flutter_challenge/password_screen.dart';
 
 class ConfirmationCodeScreen extends StatefulWidget {

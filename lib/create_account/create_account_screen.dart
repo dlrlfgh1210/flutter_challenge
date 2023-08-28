@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nomad_flutter_challenge/change_color_button.dart';
-import 'package:nomad_flutter_challenge/create_account_form.dart';
+import 'package:nomad_flutter_challenge/widget/change_color_button.dart';
+import 'package:nomad_flutter_challenge/create_account/create_account_form.dart';
 import 'package:nomad_flutter_challenge/customize_screen.dart';
-import 'package:nomad_flutter_challenge/confirmation_code_screen.dart';
+import 'package:nomad_flutter_challenge/confirmation/confirmation_code_screen.dart';
 
 class CreateAccountScreen extends StatefulWidget {
   const CreateAccountScreen({super.key});

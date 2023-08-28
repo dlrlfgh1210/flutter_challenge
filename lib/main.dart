@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nomad_flutter_challenge/confirmation_code_screen.dart';
-import 'package:nomad_flutter_challenge/interest_detail_screen.dart';
+import 'package:nomad_flutter_challenge/create_account/create_account_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const ConfirmationCodeScreen(),
+      home: const CreateAccountScreen(),
     );
   }
 }
