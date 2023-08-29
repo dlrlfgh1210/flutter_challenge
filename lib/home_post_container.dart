@@ -5,6 +5,7 @@ class HomePostContainer extends StatelessWidget {
   final NetworkImage myAvatar;
   final String myNickname, myUploadTime, myReplies, myLikes;
   final String? myText;
+  final dynamic myImages;
   const HomePostContainer({
     super.key,
     required this.myAvatar,
@@ -13,23 +14,18 @@ class HomePostContainer extends StatelessWidget {
     this.myText,
     required this.myReplies,
     required this.myLikes,
+    this.myImages,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          width: 500,
-          child: Divider(
-            color: Colors.black.withOpacity(0.1),
-            thickness: 2.0,
-          ),
-        ),
         const SizedBox(
           height: 10,
         ),
         ListTile(
+          isThreeLine: true,
           leading: CircleAvatar(
             radius: 30,
             backgroundImage: myAvatar,
@@ -77,12 +73,20 @@ class HomePostContainer extends StatelessWidget {
           ),
           subtitle: Column(
             children: [
-              Text(
-                myText!,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18,
-                ),
+              Column(
+                children: [
+                  Text(
+                    myText!,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 18,
+                    ),
+                  ),
+                  SizedBox(
+                    // height: 300,
+                    child: myImages,
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 10,
