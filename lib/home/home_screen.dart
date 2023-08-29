@@ -41,23 +41,26 @@ class _HomeScreenState extends State<HomeScreen> {
                   "https://thumb.mtstarnews.com/06/2023/06/2023062914274537673_1.jpg",
                 ),
                 myNickname: "tropicalseductions",
-                myUploadTime: "2h",
+                myUploadTime: "11h",
                 myText: "Drop a comment here to test things out.",
                 myReplies: "2 replies",
                 myLikes: "4 likes",
-                myImages: SizedBox(
-                  height: 300,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Image.network(
-                        pageImage[index],
-                        fit: BoxFit.cover,
-                      );
-                    },
-                    itemCount: pageImage.length,
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(width: 20),
+                myImages: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SizedBox(
+                    height: 300,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Image.network(
+                          pageImage[index],
+                          fit: BoxFit.cover,
+                        );
+                      },
+                      itemCount: pageImage.length,
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(width: 20),
+                    ),
                   ),
                 ),
               ),
@@ -81,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   "https://file.mk.co.kr/meet/neds/2023/08/image_readtop_2023_619590_16919900415585291.jpg",
                 ),
                 myNickname: "_plantswithkrystal_",
-                myUploadTime: "2h",
+                myUploadTime: "1h",
                 myText:
                     "If you're reading this, go water that thirsty plant. You're welcome",
                 myReplies: "8 replies",
@@ -92,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   "https://www.sisajournal.com/news/photo/202306/265204_181493_2229.jpg",
                 ),
                 myNickname: "tropicalseductions",
-                myUploadTime: "2h",
+                myUploadTime: "30m",
                 myText: "Drop a comment here to test things out.",
                 myReplies: "2 replies",
                 myLikes: "4 likes",
@@ -102,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   "https://thumb.mtstarnews.com/06/2023/06/2023062914274537673_1.jpg",
                 ),
                 myNickname: "tropicalseductions",
-                myUploadTime: "2h",
+                myUploadTime: "45m",
                 myText: "Drop a comment here to test things out.",
                 myReplies: "2 replies",
                 myLikes: "4 likes",

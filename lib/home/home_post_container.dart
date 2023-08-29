@@ -26,9 +26,39 @@ class HomePostContainer extends StatelessWidget {
         ),
         ListTile(
           isThreeLine: true,
-          leading: CircleAvatar(
-            radius: 30,
-            backgroundImage: myAvatar,
+          leading: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(4),
+                child: CircleAvatar(
+                  radius: 35,
+                  foregroundImage: myAvatar,
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: Container(
+                  width: 28,
+                  height: 28,
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 4,
+                    ),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: const Center(
+                    child: FaIcon(
+                      FontAwesomeIcons.plus,
+                      color: Colors.white,
+                      size: 15,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
