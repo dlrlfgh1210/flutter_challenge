@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nomad_flutter_challenge/home_screen.dart';
+import 'package:nomad_flutter_challenge/navigation/main_navigation_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const HomeScreen(),
+      home: const MainNavigationScreen(),
     );
   }
 }
