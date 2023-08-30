@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nomad_flutter_challenge/home/home_bottom_sheet.dart';
 
 class HomePostContainer extends StatelessWidget {
   final NetworkImage myAvatar;
@@ -17,6 +18,14 @@ class HomePostContainer extends StatelessWidget {
     this.myImages,
   });
 
+  void _onSheetTap(BuildContext context) async {
+    await showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) => const HomeBottomSheet(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,7 +40,7 @@ class HomePostContainer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(4),
                 child: CircleAvatar(
-                  radius: 35,
+                  radius: 25,
                   foregroundImage: myAvatar,
                 ),
               ),
@@ -94,8 +103,11 @@ class HomePostContainer extends StatelessWidget {
                   const SizedBox(
                     width: 5,
                   ),
-                  const Icon(
-                    Icons.more_vert,
+                  GestureDetector(
+                    onTap: () => _onSheetTap(context),
+                    child: const Icon(
+                      Icons.more_vert,
+                    ),
                   ),
                 ],
               ),

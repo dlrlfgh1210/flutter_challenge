@@ -10,31 +10,35 @@ class AuthDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          authTitle,
-          style: const TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w800,
-            color: Colors.black,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            authTitle,
+            style: const TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
           ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Text(
-          authDetail,
-          style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w300,
-            color: Colors.black,
+          const SizedBox(
+            height: 10,
           ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-      ],
+          Text(
+            authDetail,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w300,
+              color: Colors.black,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+        ],
+      ),
     );
   }
 }
