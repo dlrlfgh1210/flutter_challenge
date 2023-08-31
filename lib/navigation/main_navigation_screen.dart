@@ -18,15 +18,6 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     setState(() {
       _selectedIndex = index;
     });
-
-    if (index == 2) {
-      showModalBottomSheet(
-        isScrollControlled: true,
-        context: context,
-        backgroundColor: Colors.transparent,
-        builder: (context) => const WriteBottomSheet(),
-      );
-    }
   }
 
   @override
@@ -79,7 +70,14 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 isSelected: _selectedIndex == 2,
                 icon: FontAwesomeIcons.addressBook,
                 selectedIcon: FontAwesomeIcons.solidAddressBook,
-                onTap: () => _onTap(2),
+                onTap: () => showModalBottomSheet(
+                  isScrollControlled: true,
+                  context: context,
+                  backgroundColor: Colors.transparent,
+                  builder: (BuildContext context) {
+                    return const WriteBottomSheet();
+                  },
+                ),
               ),
               NavTab(
                 isSelected: _selectedIndex == 3,

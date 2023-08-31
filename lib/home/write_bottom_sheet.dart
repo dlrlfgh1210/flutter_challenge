@@ -75,23 +75,38 @@ class _WriteBottomSheetState extends State<WriteBottomSheet> {
                 thickness: 2.0,
               ),
             ),
-            SizedBox(
-              height: 60,
-              child: TextField(
-                controller: _postController,
-                // onTap: _onStartWriting,
-                expands: true,
-                minLines: null,
-                maxLines: null,
-                decoration: InputDecoration(
-                  hintText: "Start a thread...",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      12,
+            Row(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(4),
+                  child: CircleAvatar(
+                    radius: 25,
+                    foregroundImage: NetworkImage(
+                        "https://thumb.mtstarnews.com/06/2023/06/2023062914274537673_1.jpg"),
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                SizedBox(
+                  width: 300,
+                  height: 60,
+                  child: TextField(
+                    controller: _postController,
+                    expands: true,
+                    minLines: null,
+                    maxLines: null,
+                    decoration: InputDecoration(
+                      hintText: "Start a thread...",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          12,
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
+              ],
             ),
             const SizedBox(
               height: 50,
