@@ -63,7 +63,6 @@ class HomeBottomContainer extends StatelessWidget {
                   return;
                 }
               },
-              // onTap: () => _onReportSheetTap(context),
               child: Text(
                 secondTitle,
                 style: TextStyle(

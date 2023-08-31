@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_flutter_challenge/home/home_screen.dart';
+import 'package:nomad_flutter_challenge/home/write_bottom_sheet.dart';
 import 'package:nomad_flutter_challenge/navigation/nav_tab.dart';
 
 class MainNavigationScreen extends StatefulWidget {
@@ -17,6 +18,15 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     setState(() {
       _selectedIndex = index;
     });
+
+    if (index == 2) {
+      showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        backgroundColor: Colors.transparent,
+        builder: (context) => const WriteBottomSheet(),
+      );
+    }
   }
 
   @override
@@ -32,10 +42,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             offstage: _selectedIndex != 1,
             child: Container(),
           ),
-          Offstage(
-            offstage: _selectedIndex != 2,
-            child: Container(),
-          ),
+          // Offstage(
+          //   offstage: _selectedIndex != 2,
+          //   child: const HomeScreen(),
+          // ),
           Offstage(
             offstage: _selectedIndex != 3,
             child: Container(),
