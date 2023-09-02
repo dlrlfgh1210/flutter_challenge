@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nomad_flutter_challenge/activity/activity_screen.dart';
 import 'package:nomad_flutter_challenge/home/home_screen.dart';
 import 'package:nomad_flutter_challenge/home/write_bottom_sheet.dart';
 import 'package:nomad_flutter_challenge/navigation/nav_tab.dart';
@@ -40,7 +41,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           // ),
           Offstage(
             offstage: _selectedIndex != 3,
-            child: Container(),
+            child: const ActivityScreen(),
           ),
           Offstage(
             offstage: _selectedIndex != 4,
