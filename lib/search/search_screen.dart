@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nomad_flutter_challenge/search/search_container.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -11,14 +11,6 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController _textEditingController = TextEditingController();
-
-  bool _isSelected = false;
-
-  void _onTap() {
-    setState(() {
-      _isSelected = !_isSelected;
-    });
-  }
 
   void _onSearchChanged(String value) {}
 
@@ -36,117 +28,89 @@ class _SearchScreenState extends State<SearchScreen> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         elevation: 0,
-        title: Column(
-          children: [
-            const Text(
-              "Search",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            CupertinoSearchTextField(
-              controller: _textEditingController,
-              onChanged: _onSearchChanged,
-              onSubmitted: _onSearchSubmitted,
-            ),
-          ],
+        title: const Text(
+          "Search",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 20,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 30,
           ),
-          ListTile(
-            leading: const CircleAvatar(
-              radius: 25,
-              foregroundImage: NetworkImage(
-                "https://thumb.mtstarnews.com/06/2023/06/2023062914274537673_1.jpg",
+          child: Column(
+            children: [
+              CupertinoSearchTextField(
+                controller: _textEditingController,
+                onChanged: _onSearchChanged,
+                onSubmitted: _onSearchSubmitted,
               ),
-            ),
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        const Text(
-                          "rjmithun",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 15,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        FaIcon(
-                          FontAwesomeIcons.circleCheck,
-                          color: Colors.blue.shade300,
-                          size: 15,
-                        ),
-                      ],
-                    ),
-                    Text(
-                      "Mithun",
-                      style: TextStyle(
-                        fontWeight: FontWeight.normal,
-                        color: Colors.grey.shade500,
-                        fontSize: 15,
-                      ),
-                    ),
-                  ],
-                ),
-                GestureDetector(
-                  onTap: _onTap,
-                  child: Container(
-                    width: 100,
-                    height: 50,
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 16,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        width: 1,
-                        color:
-                            _isSelected ? Colors.white : Colors.grey.shade600,
-                      ),
-                      color: _isSelected ? Colors.grey.shade300 : Colors.white,
-                    ),
-                    child: Text(
-                      _isSelected ? "Unfollow" : "Follow",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: _isSelected ? Colors.white : Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            subtitle: const Text(
-              "26.6K follwers",
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
+              const SizedBox(
+                height: 20,
               ),
-            ),
+              const SearchContainer(
+                myImage: NetworkImage(
+                  "https://thumb.mtstarnews.com/06/2023/06/2023062914274537673_1.jpg",
+                ),
+                nickName: "rjmithun",
+                subName: "Mithun",
+                followers: "26.6K follwers",
+              ),
+              const SearchContainer(
+                myImage: NetworkImage(
+                  "https://cdn.mhnse.com/news/photo/202304/176813_175528_956.jpg",
+                ),
+                nickName: "vicenews",
+                subName: "VICE News",
+                followers: "301K follwers",
+              ),
+              const SearchContainer(
+                myImage: NetworkImage(
+                  "https://thumb.mtstarnews.com/06/2023/06/2023062914274537673_1.jpg",
+                ),
+                nickName: "trevornoah",
+                subName: "Trevor Noah",
+                followers: "789K follwers",
+              ),
+              const SearchContainer(
+                myImage: NetworkImage(
+                  "https://file.mk.co.kr/meet/neds/2023/08/image_readtop_2023_619590_16919900415585291.jpg",
+                ),
+                nickName: "condenasttraveller",
+                subName: "Conde Nast Traveller",
+                followers: "130K follwers",
+              ),
+              const SearchContainer(
+                myImage: NetworkImage(
+                  "https://www.sisajournal.com/news/photo/202306/265204_181493_2229.jpg",
+                ),
+                nickName: "chef_pillai",
+                subName: "Suresh Pillai",
+                followers: "69.2K follwers",
+              ),
+              const SearchContainer(
+                myImage: NetworkImage(
+                  "https://thumb.mtstarnews.com/06/2023/06/2023062914274537673_1.jpg",
+                ),
+                nickName: "malala",
+                subName: "Malala Yousafzai",
+                followers: "237K follwers",
+              ),
+              const SearchContainer(
+                myImage: NetworkImage(
+                  "https://newsimg.sedaily.com/2023/04/10/29O8ZA6BWK_1.jpg",
+                ),
+                nickName: "sebin_cyriac",
+                subName: "Fishing_freaks",
+                followers: "53.2K follwers",
+              ),
+            ],
           ),
-          // SizedBox(
-          //   width: 500,
-          //   child: Divider(
-          //     color: Colors.black.withOpacity(0.1),
-          //     thickness: 2.0,
-          //   ),
-          // ),
-        ],
+        ),
       ),
     );
   }
