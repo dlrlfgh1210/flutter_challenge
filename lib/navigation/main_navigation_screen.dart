@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_flutter_challenge/home/home_screen.dart';
 import 'package:nomad_flutter_challenge/home/write_bottom_sheet.dart';
 import 'package:nomad_flutter_challenge/navigation/nav_tab.dart';
+import 'package:nomad_flutter_challenge/search/search_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -12,7 +13,7 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   void _onTap(int index) {
     setState(() {
@@ -31,7 +32,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           ),
           Offstage(
             offstage: _selectedIndex != 1,
-            child: Container(),
+            child: const SearchScreen(),
           ),
           // Offstage(
           //   offstage: _selectedIndex != 2,
