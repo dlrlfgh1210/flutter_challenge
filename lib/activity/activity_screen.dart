@@ -1,6 +1,7 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nomad_flutter_challenge/activity/activity_container.dart';
 
 final tabs = [
   "All",
@@ -18,14 +19,6 @@ class ActivityScreen extends StatefulWidget {
 }
 
 class _ActivityScreenState extends State<ActivityScreen> {
-  bool _isSelected = false;
-
-  void _onTap() {
-    setState(() {
-      _isSelected = !_isSelected;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -37,7 +30,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
             buttonMargin: const EdgeInsets.symmetric(horizontal: 10),
             radius: 15,
             contentPadding: const EdgeInsets.symmetric(horizontal: 25),
-            unselectedBorderColor: Colors.grey.shade300,
+            unselectedBorderColor: Colors.grey.shade500,
             borderWidth: 1,
             backgroundColor: Colors.black,
             unselectedBackgroundColor: Colors.white,
@@ -59,126 +52,175 @@ class _ActivityScreenState extends State<ActivityScreen> {
         ),
         body: TabBarView(
           children: [
-            Column(
-              children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                ListTile(
-                  isThreeLine: true,
-                  leading: Stack(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.all(4),
-                        child: CircleAvatar(
-                          radius: 25,
-                          foregroundImage: NetworkImage(
-                            "https://thumb.mtstarnews.com/06/2023/06/2023062914274537673_1.jpg",
-                          ),
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: [
+                  ActivityContainer(
+                    profileImage: const NetworkImage(
+                      "https://thumb.mtstarnews.com/06/2023/06/2023062914274537673_1.jpg",
+                    ),
+                    profileContainer: Container(
+                      width: 28,
+                      height: 28,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: const Center(
+                        child: FaIcon(
+                          FontAwesomeIcons.solidHeart,
+                          color: Colors.white,
+                          size: 15,
                         ),
                       ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          width: 28,
-                          height: 28,
-                          decoration: BoxDecoration(
-                            color: Colors.black,
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 4,
-                            ),
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                          child: const Center(
-                            child: FaIcon(
-                              FontAwesomeIcons.plus,
-                              color: Colors.white,
-                              size: 15,
-                            ),
-                          ),
+                    ),
+                    nickName: "rjmithun",
+                    uploadTime: "4h",
+                    title: "Mithun",
+                    detail:
+                        "Here's a thread you should follow if you love botany @jane_mobbin",
+                  ),
+                  ActivityContainer(
+                    profileImage: const NetworkImage(
+                      "https://image.ytn.co.kr/osen/2023/01/4934c786-1e08-4f52-aca2-a600838e5655.jpg",
+                    ),
+                    profileContainer: Container(
+                      width: 28,
+                      height: 28,
+                      decoration: BoxDecoration(
+                        color: Colors.purple,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: const Center(
+                        child: FaIcon(
+                          FontAwesomeIcons.solidUser,
+                          color: Colors.white,
+                          size: 15,
                         ),
                       ),
-                    ],
+                    ),
+                    nickName: "john_mobbin",
+                    uploadTime: "30m",
+                    title: "Starting our my gardening club with thr...",
+                    detail: "Count me in!",
                   ),
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              const Text(
-                                "rjmithun",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 15,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "4h",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 15,
-                                    color: Colors.grey.shade600),
-                              ),
-                            ],
-                          ),
-                          Text(
-                            "Mithun",
-                            style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: Colors.grey.shade500,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ],
+                  ActivityContainer(
+                    profileImage: const NetworkImage(
+                      "https://cdn.9oodnews.com/news/photo/202204/16142_23757_5022.jpg",
+                    ),
+                    profileContainer: Container(
+                      width: 28,
+                      height: 28,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(25),
                       ),
-                      // Container(
-                      //   width: 100,
-                      //   height: 50,
-                      //   padding: const EdgeInsets.symmetric(
-                      //     vertical: 16,
-                      //   ),
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(20),
-                      //     border: Border.all(
-                      //       width: 1,
-                      //       color: Colors.grey.shade600,
-                      //     ),
-                      //     color: Colors.white,
-                      //   ),
-                      //   child: const Text(
-                      //     "Follow",
-                      //     textAlign: TextAlign.center,
-                      //     style: TextStyle(
-                      //       color: Colors.black,
-                      //       fontWeight: FontWeight.bold,
-                      //     ),
-                      //   ),
-                      // ),
-                    ],
+                      child: const Center(
+                        child: FaIcon(
+                          FontAwesomeIcons.solidHeart,
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                      ),
+                    ),
+                    nickName: "the.plantdads",
+                    uploadTime: "10h",
+                    title: "Followde you",
+                    detail: "",
                   ),
-                  subtitle: const Text(
-                    "Here's a thread you should follow if you love botany @jane_mobbin",
-                    style: TextStyle(
-                      color: Colors.black,
+                  ActivityContainer(
+                    profileImage: const NetworkImage(
+                      "https://thumb.mtstarnews.com/06/2023/06/2023062914274537673_1.jpg",
+                    ),
+                    profileContainer: Container(
+                      width: 28,
+                      height: 28,
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: const Center(
+                        child: FaIcon(
+                          FontAwesomeIcons.solidStar,
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                      ),
+                    ),
+                    nickName: "I_love_France",
+                    uploadTime: "1h",
+                    title: "🇫🇷🇫🇷🇫🇷",
+                    detail: "",
+                    followingBox: Container(
+                      width: 100,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 16,
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                          border: Border.all(
+                            width: 1,
+                            color: Colors.grey,
+                          )),
+                      child: const Text(
+                        "Following",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: 500,
-                  child: Divider(
-                    color: Colors.black.withOpacity(0.1),
-                    thickness: 2.0,
+                  ActivityContainer(
+                    profileImage: const NetworkImage(
+                      "https://weekly.cnbnews.com/data/photos/20221146/art_146687_1668476400.jpg",
+                    ),
+                    profileContainer: Container(
+                      width: 28,
+                      height: 28,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: const Center(
+                        child: FaIcon(
+                          FontAwesomeIcons.heart,
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                      ),
+                    ),
+                    nickName: "rjmithun",
+                    uploadTime: "4h",
+                    title: "Mithun",
+                    detail:
+                        "Here's a thread you should follow if you love botany @jane_mobbin",
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             for (var tab in tabs.skip(1))
               Center(
