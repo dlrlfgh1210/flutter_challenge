@@ -4,6 +4,7 @@ import 'package:nomad_flutter_challenge/activity/activity_screen.dart';
 import 'package:nomad_flutter_challenge/home/home_screen.dart';
 import 'package:nomad_flutter_challenge/home/write_bottom_sheet.dart';
 import 'package:nomad_flutter_challenge/navigation/nav_tab.dart';
+import 'package:nomad_flutter_challenge/profile/profile_screen.dart';
 import 'package:nomad_flutter_challenge/search/search_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
@@ -14,7 +15,7 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 4;
 
   void _onTap(int index) {
     setState(() {
@@ -45,7 +46,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           ),
           Offstage(
             offstage: _selectedIndex != 4,
-            child: Container(),
+            child: const ProfileScreen(),
           )
         ],
       ),
