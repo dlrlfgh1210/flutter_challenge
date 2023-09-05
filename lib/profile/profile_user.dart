@@ -62,7 +62,7 @@ class ProfileUser extends StatelessWidget {
               const CircleAvatar(
                 radius: 40,
                 foregroundImage: NetworkImage(
-                  "https://cdn.9oodnews.com/news/photo/202204/16142_23757_5022.jpg",
+                  "https://ssl.pstatic.net/mimgnews/image/144/2023/09/04/0000910939_001_20230904154401286.jpg",
                 ),
               )
             ],

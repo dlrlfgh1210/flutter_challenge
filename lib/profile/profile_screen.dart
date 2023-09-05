@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_flutter_challenge/home/home_post_container.dart';
 import 'package:nomad_flutter_challenge/profile/profile_tab_bar.dart';
 import 'package:nomad_flutter_challenge/profile/profile_user.dart';
+import 'package:nomad_flutter_challenge/setting/setting_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -12,16 +13,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  List<String> pageImage = [
-    "https://cdn.pixabay.com/photo/2017/09/25/13/12/puppy-2785074_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2016/02/18/18/37/puppy-1207816_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2019/07/30/05/53/dog-4372036_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2019/02/06/15/18/puppy-3979350_960_720.jpg",
-    "https://dimg.donga.com/wps/NEWS/IMAGE/2022/01/28/111500268.2.jpg",
-    "https://newsimg.sedaily.com/2023/04/10/29O8ZA6BWK_1.jpg",
-  ];
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -47,7 +38,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SettingsScreen(),
+                          ),
+                        );
+                      },
                       icon: const FaIcon(
                         FontAwesomeIcons.list,
                       ),
