@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nomad_flutter_challenge/camera/camera_screen.dart';
 import 'package:nomad_flutter_challenge/widget/change_color_button.dart';
 
 class WriteBottomSheet extends StatefulWidget {
@@ -88,23 +90,43 @@ class _WriteBottomSheetState extends State<WriteBottomSheet> {
                 const SizedBox(
                   width: 10,
                 ),
-                SizedBox(
-                  width: 300,
-                  height: 60,
-                  child: TextField(
-                    controller: _postController,
-                    expands: true,
-                    minLines: null,
-                    maxLines: null,
-                    decoration: InputDecoration(
-                      hintText: "Start a thread...",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          12,
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 260,
+                      height: 60,
+                      child: TextField(
+                        controller: _postController,
+                        expands: true,
+                        minLines: null,
+                        maxLines: null,
+                        decoration: InputDecoration(
+                          hintText: "Start a thread...",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                              12,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CameraScreen(),
+                          ),
+                        );
+                      },
+                      child: const FaIcon(
+                        FontAwesomeIcons.clipboard,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
