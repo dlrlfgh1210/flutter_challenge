@@ -38,6 +38,10 @@ dependencies:
   font_awesome_flutter: ^10.4.0
   easy_rich_text: ^2.0.0
   buttons_tabbar: ^1.3.7+1
+  camera: ^0.10.5+4
+  permission_handler: ^10.4.3
+  gallery_saver: ^2.3.2
+  image_picker: ^1.0.4
 
 dev_dependencies:
   flutter_test:
