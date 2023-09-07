@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gallery_saver/gallery_saver.dart';
+import 'package:nomad_flutter_challenge/home/write_bottom_sheet.dart';
 
 class PhotoPreviewScreen extends StatefulWidget {
   final String imagePath;
@@ -39,7 +40,16 @@ class _PhotoPreviewScreenState extends State<PhotoPreviewScreen> {
         actions: [
           if (!widget.isPicked)
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                if (!mounted) return;
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => WriteBottomSheet(
+                      selectedImagePath: widget.imagePath,
+                    ),
+                  ),
+                );
+              },
               child: const Text(
                 "확인",
               ),

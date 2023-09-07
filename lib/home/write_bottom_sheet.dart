@@ -1,10 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_flutter_challenge/camera/camera_screen.dart';
 import 'package:nomad_flutter_challenge/widget/change_color_button.dart';
 
 class WriteBottomSheet extends StatefulWidget {
-  const WriteBottomSheet({super.key});
+  final dynamic selectedImagePath;
+  const WriteBottomSheet({
+    super.key,
+    this.selectedImagePath,
+  });
 
   @override
   State<WriteBottomSheet> createState() => _WriteBottomSheetState();
@@ -90,48 +96,67 @@ class _WriteBottomSheetState extends State<WriteBottomSheet> {
                 const SizedBox(
                   width: 10,
                 ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 260,
-                      height: 60,
-                      child: TextField(
-                        controller: _postController,
-                        expands: true,
-                        minLines: null,
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          hintText: "Start a thread...",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(
-                              12,
-                            ),
-                          ),
+                SizedBox(
+                  width: 260,
+                  height: 60,
+                  child: TextField(
+                    controller: _postController,
+                    expands: true,
+                    minLines: null,
+                    maxLines: null,
+                    decoration: InputDecoration(
+                      hintText: "Start a thread...",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          12,
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const CameraScreen(),
-                          ),
-                        );
-                      },
-                      child: const FaIcon(
-                        FontAwesomeIcons.clipboard,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),
             const SizedBox(
-              height: 50,
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CameraScreen(),
+                      ),
+                    );
+                  },
+                  child: const FaIcon(
+                    FontAwesomeIcons.clipboard,
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+                const FaIcon(
+                  FontAwesomeIcons.circleXmark,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              height: 300,
+              width: 300,
+              child: widget.selectedImagePath != null
+                  ? Image.file(File(widget.selectedImagePath))
+                  : Container(
+                      decoration: const BoxDecoration(color: Colors.amber),
+                    ),
+            ),
+            const SizedBox(
+              height: 10,
             ),
             GestureDetector(
               onTap: _onSubmitTap,
