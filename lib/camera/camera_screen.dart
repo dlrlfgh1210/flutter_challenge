@@ -1,7 +1,9 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_flutter_challenge/camera/photo_preview_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});
@@ -32,10 +34,12 @@ class _CameraScreenState extends State<CameraScreen> {
 
   void takePhoto() {
     _cameraController.takePicture().then((image) {
+      if (!mounted) return;
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => PhotoPreviewScreen(
             imagePath: image.path,
+            isPicked: false,
           ),
         ),
       );
@@ -59,10 +63,33 @@ class _CameraScreenState extends State<CameraScreen> {
     }
   }
 
+  Future<void> _onPickPhotoPressed() async {
+    final image = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+    );
+    if (image == null) return;
+
+    if (!mounted) return;
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => PhotoPreviewScreen(
+          imagePath: image.path,
+          isPicked: false,
+        ),
+      ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
     initPermissions();
+  }
+
+  @override
+  void dispose() {
+    _cameraController.dispose();
+    super.dispose();
   }
 
   @override
@@ -90,17 +117,36 @@ class _CameraScreenState extends State<CameraScreen> {
                 CameraPreview(_cameraController),
                 Positioned(
                     bottom: 40,
-                    child: GestureDetector(
-                      onTap:
-                          _cameraController != null ? () => takePhoto() : null,
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      children: [
+                        const Spacer(),
+                        GestureDetector(
+                          onTap: _cameraController != null
+                              ? () => takePhoto()
+                              : null,
+                          child: Container(
+                            width: 80,
+                            height: 80,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
-                      ),
+                        Expanded(
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: IconButton(
+                              onPressed: _onPickPhotoPressed,
+                              icon: const FaIcon(
+                                FontAwesomeIcons.image,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
                     ))
               ]),
       ),

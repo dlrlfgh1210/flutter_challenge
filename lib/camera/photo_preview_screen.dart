@@ -6,9 +6,11 @@ import 'package:gallery_saver/gallery_saver.dart';
 
 class PhotoPreviewScreen extends StatefulWidget {
   final String imagePath;
+  final bool isPicked;
   const PhotoPreviewScreen({
     super.key,
     required this.imagePath,
+    required this.isPicked,
   });
 
   @override
@@ -35,6 +37,13 @@ class _PhotoPreviewScreenState extends State<PhotoPreviewScreen> {
       appBar: AppBar(
         title: const Text('Preview'),
         actions: [
+          if (!widget.isPicked)
+            TextButton(
+              onPressed: () {},
+              child: const Text(
+                "확인",
+              ),
+            ),
           IconButton(
             onPressed: _saveToGallery,
             icon: FaIcon(
