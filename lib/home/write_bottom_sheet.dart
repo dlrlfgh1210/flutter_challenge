@@ -110,6 +110,7 @@ class _WriteBottomSheetState extends State<WriteBottomSheet> {
                         borderRadius: BorderRadius.circular(
                           12,
                         ),
+                        borderSide: BorderSide.none,
                       ),
                     ),
                   ),
@@ -151,9 +152,7 @@ class _WriteBottomSheetState extends State<WriteBottomSheet> {
               width: 300,
               child: widget.selectedImagePath != null
                   ? Image.file(File(widget.selectedImagePath))
-                  : Container(
-                      decoration: const BoxDecoration(color: Colors.amber),
-                    ),
+                  : null,
             ),
             const SizedBox(
               height: 10,
