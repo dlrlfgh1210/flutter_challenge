@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_flutter_challenge/activity/activity_screen.dart';
+import 'package:nomad_flutter_challenge/dark_mode.dart';
 import 'package:nomad_flutter_challenge/home/home_screen.dart';
 import 'package:nomad_flutter_challenge/home/write_bottom_sheet.dart';
 import 'package:nomad_flutter_challenge/navigation/nav_tab.dart';
@@ -15,7 +16,7 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int _selectedIndex = 4;
+  int _selectedIndex = 0;
 
   void _onTap(int index) {
     setState(() {
@@ -25,6 +26,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = isDarkMode(context);
     return Scaffold(
       body: Stack(
         children: [
@@ -51,7 +53,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
+        color: isDark ? Colors.black : Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Row(

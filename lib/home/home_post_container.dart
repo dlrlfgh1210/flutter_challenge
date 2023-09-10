@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nomad_flutter_challenge/dark_mode.dart';
 import 'package:nomad_flutter_challenge/home/home_bottom_sheet.dart';
 
 class HomePostContainer extends StatelessWidget {
@@ -97,7 +98,7 @@ class HomePostContainer extends StatelessWidget {
                     myUploadTime,
                     style: const TextStyle(
                       fontWeight: FontWeight.w300,
-                      fontSize: 20,
+                      fontSize: 15,
                     ),
                   ),
                   const SizedBox(
@@ -125,7 +126,6 @@ class HomePostContainer extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    // height: 300,
                     child: myImages,
                   ),
                 ],
@@ -133,32 +133,32 @@ class HomePostContainer extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              const Row(
+              Row(
                 children: [
                   FaIcon(
                     FontAwesomeIcons.heart,
-                    color: Colors.black,
+                    color: isDarkMode(context) ? Colors.grey : Colors.black,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   FaIcon(
                     FontAwesomeIcons.comment,
-                    color: Colors.black,
+                    color: isDarkMode(context) ? Colors.grey : Colors.black,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   FaIcon(
                     FontAwesomeIcons.rotate,
-                    color: Colors.black,
+                    color: isDarkMode(context) ? Colors.grey : Colors.black,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   FaIcon(
                     FontAwesomeIcons.paperPlane,
-                    color: Colors.black,
+                    color: isDarkMode(context) ? Colors.grey : Colors.black,
                   ),
                 ],
               ),
@@ -203,7 +203,9 @@ class HomePostContainer extends StatelessWidget {
         SizedBox(
           width: 500,
           child: Divider(
-            color: Colors.black.withOpacity(0.1),
+            color: isDarkMode(context)
+                ? Colors.grey.shade700
+                : Colors.black.withOpacity(0.1),
             thickness: 2.0,
           ),
         ),

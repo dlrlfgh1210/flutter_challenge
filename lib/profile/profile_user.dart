@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nomad_flutter_challenge/dark_mode.dart';
 
 class ProfileUser extends StatelessWidget {
   const ProfileUser({super.key});
@@ -16,21 +17,21 @@ class ProfileUser extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     "Jane",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: isDarkMode(context) ? null : Colors.black,
                       fontSize: 30,
                     ),
                   ),
                   Row(
                     children: [
-                      const Text(
+                      Text(
                         "jane_mobbin",
                         style: TextStyle(
                           fontWeight: FontWeight.w300,
-                          color: Colors.black,
+                          color: isDarkMode(context) ? null : Colors.black,
                           fontSize: 20,
                         ),
                       ),
@@ -70,22 +71,22 @@ class ProfileUser extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const Text(
+          Text(
             "Plant enthusiast!",
             style: TextStyle(
               fontWeight: FontWeight.w300,
-              color: Colors.black,
+              color: isDarkMode(context) ? null : Colors.black,
               fontSize: 20,
             ),
           ),
           const SizedBox(
             height: 10,
           ),
-          const Text(
+          Text(
             "2 Followers",
             style: TextStyle(
               fontWeight: FontWeight.w300,
-              color: Colors.grey,
+              color: isDarkMode(context) ? null : Colors.grey,
               fontSize: 20,
             ),
           ),
@@ -101,16 +102,16 @@ class ProfileUser extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.white,
+                    color: isDarkMode(context) ? Colors.grey : Colors.white,
                     border: Border.all(
                       width: 1,
                       color: Colors.grey,
                     )),
-                child: const Text(
+                child: Text(
                   "Edit profile",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: isDarkMode(context) ? Colors.white : Colors.black,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -125,16 +126,16 @@ class ProfileUser extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.white,
+                    color: isDarkMode(context) ? Colors.grey : Colors.white,
                     border: Border.all(
                       width: 1,
                       color: Colors.grey,
                     )),
-                child: const Text(
+                child: Text(
                   "Share profile",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: isDarkMode(context) ? Colors.white : Colors.black,
                     fontWeight: FontWeight.w600,
                   ),
                 ),

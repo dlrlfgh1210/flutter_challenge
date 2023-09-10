@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nomad_flutter_challenge/dark_mode.dart';
 import 'package:nomad_flutter_challenge/search/search_container.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -28,10 +29,10 @@ class _SearchScreenState extends State<SearchScreen> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         elevation: 0,
-        title: const Text(
+        title: Text(
           "Search",
           style: TextStyle(
-            color: Colors.black,
+            color: isDarkMode(context) ? Colors.white : Colors.black,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
@@ -80,8 +81,8 @@ class _SearchScreenState extends State<SearchScreen> {
                 myImage: NetworkImage(
                   "https://file.mk.co.kr/meet/neds/2023/08/image_readtop_2023_619590_16919900415585291.jpg",
                 ),
-                nickName: "condenasttraveller",
-                subName: "Conde Nast Traveller",
+                nickName: "condenast",
+                subName: "Conde Nast",
                 followers: "130K follwers",
               ),
               const SearchContainer(

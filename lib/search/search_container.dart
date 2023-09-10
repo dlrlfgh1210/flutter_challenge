@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nomad_flutter_challenge/dark_mode.dart';
 
 class SearchContainer extends StatefulWidget {
   final String nickName, subName, followers;
@@ -72,7 +73,7 @@ class _SearchContainerState extends State<SearchContainer> {
               GestureDetector(
                 onTap: _onTap,
                 child: Container(
-                  width: 100,
+                  width: 80,
                   height: 50,
                   padding: const EdgeInsets.symmetric(
                     vertical: 16,
@@ -81,15 +82,27 @@ class _SearchContainerState extends State<SearchContainer> {
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
                       width: 1,
-                      color: _isSelected ? Colors.white : Colors.grey.shade600,
+                      color: _isSelected
+                          ? Colors.white
+                          : isDarkMode(context)
+                              ? Colors.grey
+                              : Colors.grey.shade600,
                     ),
-                    color: _isSelected ? Colors.grey.shade300 : Colors.white,
+                    color: _isSelected
+                        ? Colors.grey.shade300
+                        : isDarkMode(context)
+                            ? Colors.grey
+                            : Colors.white,
                   ),
                   child: Text(
                     _isSelected ? "Unfollow" : "Follow",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: _isSelected ? Colors.white : Colors.black,
+                      color: _isSelected
+                          ? Colors.white
+                          : isDarkMode(context)
+                              ? null
+                              : Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -99,8 +112,8 @@ class _SearchContainerState extends State<SearchContainer> {
           ),
           subtitle: Text(
             widget.followers,
-            style: const TextStyle(
-              color: Colors.black,
+            style: TextStyle(
+              color: isDarkMode(context) ? null : Colors.black,
               fontWeight: FontWeight.bold,
               fontSize: 20,
             ),
@@ -109,7 +122,9 @@ class _SearchContainerState extends State<SearchContainer> {
         SizedBox(
           width: 500,
           child: Divider(
-            color: Colors.black.withOpacity(0.1),
+            color: isDarkMode(context)
+                ? Colors.grey
+                : Colors.black.withOpacity(0.1),
             thickness: 2.0,
           ),
         ),

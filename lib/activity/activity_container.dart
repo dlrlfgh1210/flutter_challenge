@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nomad_flutter_challenge/dark_mode.dart';
 
 class ActivityContainer extends StatelessWidget {
   final dynamic profileImage;
@@ -73,10 +74,10 @@ class ActivityContainer extends StatelessWidget {
                   ),
                   Text(
                     title,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                     style: TextStyle(
-                      fontWeight: FontWeight.normal,
                       color: Colors.grey.shade500,
-                      fontSize: 15,
                     ),
                   ),
                   const SizedBox(
@@ -90,8 +91,8 @@ class ActivityContainer extends StatelessWidget {
             detail,
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
-            style: const TextStyle(
-              color: Colors.black,
+            style: TextStyle(
+              color: isDarkMode(context) ? null : Colors.black,
             ),
           ),
           trailing: followingBox,
@@ -99,7 +100,7 @@ class ActivityContainer extends StatelessWidget {
         SizedBox(
           width: 500,
           child: Divider(
-            color: Colors.black.withOpacity(0.1),
+            color: isDarkMode(context) ? null : Colors.black.withOpacity(0.1),
             thickness: 2.0,
           ),
         ),
