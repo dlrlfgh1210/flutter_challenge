@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nomad_flutter_challenge/privacy/privacy_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
+  static const String routeName = "settings";
+  static const String routeURL = "/settings";
   const SettingsScreen({super.key});
 
   @override
@@ -10,6 +13,10 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  void _onPrivacyTap() {
+    context.pushNamed(PrivacyScreen.routeName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,14 +41,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: Text("Notifications"),
           ),
           ListTile(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const PrivacyScreen(),
-                ),
-              );
-            },
+            onTap: _onPrivacyTap,
             leading: const FaIcon(
               FontAwesomeIcons.lock,
             ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nomad_flutter_challenge/navigation/main_navigation_screen.dart';
+import 'package:nomad_flutter_challenge/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: myRouter,
       themeMode: ThemeMode.system,
       theme: ThemeData(
         brightness: Brightness.light,
@@ -40,7 +41,6 @@ class MyApp extends StatelessWidget {
           color: Colors.grey.shade900,
         ),
       ),
-      home: const MainNavigationScreen(),
     );
   }
 }

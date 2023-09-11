@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nomad_flutter_challenge/home/home_post_container.dart';
 import 'package:nomad_flutter_challenge/profile/profile_tab_bar.dart';
 import 'package:nomad_flutter_challenge/profile/profile_user.dart';
@@ -13,6 +14,10 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  void _onSettingsTap() {
+    context.pushNamed(SettingsScreen.routeName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -38,14 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SettingsScreen(),
-                          ),
-                        );
-                      },
+                      onPressed: _onSettingsTap,
                       icon: const FaIcon(
                         FontAwesomeIcons.list,
                       ),
