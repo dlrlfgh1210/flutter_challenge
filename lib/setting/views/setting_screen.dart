@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_flutter_challenge/privacy/privacy_screen.dart';
 import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
-import 'package:provider/provider.dart';
 
-class SettingsScreen extends StatefulWidget {
+class SettingsScreen extends ConsumerStatefulWidget {
   static const String routeName = "settings";
   static const String routeURL = "/settings";
   const SettingsScreen({super.key});
 
   @override
-  State<SettingsScreen> createState() => _SettingsScreenState();
+  SettingsScreenState createState() => SettingsScreenState();
 }
 
-class _SettingsScreenState extends State<SettingsScreen> {
+class SettingsScreenState extends ConsumerState<SettingsScreen> {
   void _onPrivacyTap() {
     context.pushNamed(PrivacyScreen.routeName);
   }
@@ -31,13 +31,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: Column(
         children: [
           SwitchListTile(
-            value: context.watch<DarkConfigViewModel>().isDarked,
+            value: ref.watch(darkConfigProvider).isDarked,
             onChanged: (value) =>
-                context.read<DarkConfigViewModel>().setDarked(value),
+                ref.read(darkConfigProvider.notifier).setDarked(value),
             title: Row(
               children: [
                 FaIcon(
-                  context.read<DarkConfigViewModel>().isDarked
+                  ref.watch(darkConfigProvider).isDarked
                       ? FontAwesomeIcons.moon
                       : Icons.sunny,
                 ),
@@ -45,7 +45,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   width: 30,
                 ),
                 Text(
-                  context.read<DarkConfigViewModel>().isDarked
+                  ref.watch(darkConfigProvider).isDarked
                       ? "Dark Mode"
                       : "Light Mode",
                 ),

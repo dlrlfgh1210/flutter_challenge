@@ -1,3 +1,4 @@
+//DarkConfigModel
 class DarkConfigModel {
   bool isDarked;
 

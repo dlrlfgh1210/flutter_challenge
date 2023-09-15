@@ -1,5 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+//DarkConfigRepository
 class DarkConfigRepository {
   static const String _isdarked = "isdarked";
 

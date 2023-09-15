@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_flutter_challenge/activity/activity_screen.dart';
@@ -8,9 +9,8 @@ import 'package:nomad_flutter_challenge/navigation/nav_tab.dart';
 import 'package:nomad_flutter_challenge/profile/profile_screen.dart';
 import 'package:nomad_flutter_challenge/search/search_screen.dart';
 import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
-import 'package:provider/provider.dart';
 
-class MainNavigationScreen extends StatefulWidget {
+class MainNavigationScreen extends ConsumerStatefulWidget {
   static const String routeName = "mainNavigation";
   final String tab;
   const MainNavigationScreen({
@@ -19,10 +19,10 @@ class MainNavigationScreen extends StatefulWidget {
   });
 
   @override
-  State<MainNavigationScreen> createState() => _MainNavigationScreenState();
+  MainNavigationScreenState createState() => MainNavigationScreenState();
 }
 
-class _MainNavigationScreenState extends State<MainNavigationScreen> {
+class MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
   final List<String> _tabs = [
     "",
     "search",
@@ -66,7 +66,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        color: context.read<DarkConfigViewModel>().isDarked
+        color: ref.watch(darkConfigProvider).isDarked
             ? Colors.black
             : Colors.white,
         child: Padding(

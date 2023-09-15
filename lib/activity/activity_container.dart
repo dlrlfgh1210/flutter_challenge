@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
-import 'package:provider/provider.dart';
 
-class ActivityContainer extends StatelessWidget {
+class ActivityContainer extends ConsumerWidget {
   final dynamic profileImage;
   final dynamic profileContainer;
   final String nickName, uploadTime, title, detail;
@@ -19,7 +19,7 @@ class ActivityContainer extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
         const SizedBox(
@@ -93,9 +93,8 @@ class ActivityContainer extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
             style: TextStyle(
-              color: context.read<DarkConfigViewModel>().isDarked
-                  ? null
-                  : Colors.black,
+              color:
+                  ref.watch(darkConfigProvider).isDarked ? null : Colors.black,
             ),
           ),
           trailing: followingBox,
@@ -103,7 +102,7 @@ class ActivityContainer extends StatelessWidget {
         SizedBox(
           width: 500,
           child: Divider(
-            color: context.read<DarkConfigViewModel>().isDarked
+            color: ref.watch(darkConfigProvider).isDarked
                 ? null
                 : Colors.black.withOpacity(0.1),
             thickness: 2.0,

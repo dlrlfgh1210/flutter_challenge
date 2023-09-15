@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nomad_flutter_challenge/router.dart';
 import 'package:nomad_flutter_challenge/setting/repos/dark_config_repo.dart';
 import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -13,25 +13,25 @@ void main() async {
   final repository = DarkConfigRepository(preferences);
 
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => DarkConfigViewModel(repository),
-        )
+    ProviderScope(
+      overrides: [
+        darkConfigProvider.overrideWith(
+          () => DarkConfigViewModel(repository),
+        ),
       ],
       child: const MyApp(),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
       routerConfig: myRouter,
-      themeMode: context.watch<DarkConfigViewModel>().isDarked
+      themeMode: ref.watch(darkConfigProvider).isDarked
           ? ThemeMode.dark
           : ThemeMode.light,
       theme: ThemeData(

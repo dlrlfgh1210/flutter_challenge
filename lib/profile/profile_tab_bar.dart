@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
-import 'package:provider/provider.dart';
+import 'package:nomad_flutter_challenge/dark_mode.dart';
 
 class ProfileTabBar extends SliverPersistentHeaderDelegate {
   @override
@@ -11,7 +10,7 @@ class ProfileTabBar extends SliverPersistentHeaderDelegate {
         color: Theme.of(context).appBarTheme.backgroundColor,
         border: Border.symmetric(
           horizontal: BorderSide(
-            color: context.read<DarkConfigViewModel>().isDarked
+            color: isDarkMode(context)
                 ? Colors.grey.shade700
                 : Colors.grey.shade200,
             width: 0.5,
@@ -21,15 +20,11 @@ class ProfileTabBar extends SliverPersistentHeaderDelegate {
       child: TabBar(
         indicatorSize: TabBarIndicatorSize.label,
         unselectedLabelColor: Colors.grey.shade400,
-        indicatorColor: context.read<DarkConfigViewModel>().isDarked
-            ? Colors.white
-            : Colors.black,
+        indicatorColor: isDarkMode(context) ? Colors.white : Colors.black,
         labelPadding: const EdgeInsets.symmetric(
           vertical: 10,
         ),
-        labelColor: context.read<DarkConfigViewModel>().isDarked
-            ? Colors.white
-            : Colors.black,
+        labelColor: isDarkMode(context) ? Colors.white : Colors.black,
         tabs: const [
           Padding(
             padding: EdgeInsets.symmetric(

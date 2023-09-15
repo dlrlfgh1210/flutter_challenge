@@ -1,9 +1,9 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_flutter_challenge/activity/activity_container.dart';
 import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
-import 'package:provider/provider.dart';
 
 final tabs = [
   "All",
@@ -13,14 +13,14 @@ final tabs = [
   "Repost",
 ];
 
-class ActivityScreen extends StatefulWidget {
+class ActivityScreen extends ConsumerStatefulWidget {
   const ActivityScreen({super.key});
 
   @override
-  State<ActivityScreen> createState() => _ActivityScreenState();
+  ActivityScreenState createState() => ActivityScreenState();
 }
 
-class _ActivityScreenState extends State<ActivityScreen> {
+class ActivityScreenState extends ConsumerState<ActivityScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -34,15 +34,14 @@ class _ActivityScreenState extends State<ActivityScreen> {
             contentPadding: const EdgeInsets.symmetric(horizontal: 25),
             unselectedBorderColor: Colors.grey.shade500,
             borderWidth: 1,
-            backgroundColor: context.read<DarkConfigViewModel>().isDarked
+            backgroundColor: ref.watch(darkConfigProvider).isDarked
                 ? Colors.grey.shade400
                 : Colors.black,
-            unselectedBackgroundColor:
-                context.read<DarkConfigViewModel>().isDarked
-                    ? Colors.black
-                    : Colors.white,
+            unselectedBackgroundColor: ref.watch(darkConfigProvider).isDarked
+                ? Colors.black
+                : Colors.white,
             unselectedLabelStyle: TextStyle(
-              color: context.read<DarkConfigViewModel>().isDarked
+              color: ref.watch(darkConfigProvider).isDarked
                   ? Colors.white
                   : Colors.black,
               fontWeight: FontWeight.w600,
@@ -184,7 +183,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                       ),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: context.read<DarkConfigViewModel>().isDarked
+                          color: ref.watch(darkConfigProvider).isDarked
                               ? null
                               : Colors.white,
                           border: Border.all(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_flutter_challenge/home/home_post_container.dart';
@@ -6,14 +7,14 @@ import 'package:nomad_flutter_challenge/profile/profile_tab_bar.dart';
 import 'package:nomad_flutter_challenge/profile/profile_user.dart';
 import 'package:nomad_flutter_challenge/setting/views/setting_screen.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  ProfileScreenState createState() => ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class ProfileScreenState extends ConsumerState<ProfileScreen> {
   void _onSettingsTap() {
     context.pushNamed(SettingsScreen.routeName);
   }

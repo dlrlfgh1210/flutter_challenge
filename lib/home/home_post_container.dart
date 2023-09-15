@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_flutter_challenge/home/home_bottom_sheet.dart';
 import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
-import 'package:provider/provider.dart';
 
-class HomePostContainer extends StatelessWidget {
+class HomePostContainer extends ConsumerWidget {
   final NetworkImage myAvatar;
   final String myNickname, myUploadTime, myReplies, myLikes;
   final String? myText;
@@ -29,7 +29,7 @@ class HomePostContainer extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
         const SizedBox(
@@ -138,7 +138,7 @@ class HomePostContainer extends StatelessWidget {
                 children: [
                   FaIcon(
                     FontAwesomeIcons.heart,
-                    color: context.read<DarkConfigViewModel>().isDarked
+                    color: ref.watch(darkConfigProvider).isDarked
                         ? Colors.grey
                         : Colors.black,
                   ),
@@ -147,7 +147,7 @@ class HomePostContainer extends StatelessWidget {
                   ),
                   FaIcon(
                     FontAwesomeIcons.comment,
-                    color: context.read<DarkConfigViewModel>().isDarked
+                    color: ref.watch(darkConfigProvider).isDarked
                         ? Colors.grey
                         : Colors.black,
                   ),
@@ -156,7 +156,7 @@ class HomePostContainer extends StatelessWidget {
                   ),
                   FaIcon(
                     FontAwesomeIcons.rotate,
-                    color: context.read<DarkConfigViewModel>().isDarked
+                    color: ref.watch(darkConfigProvider).isDarked
                         ? Colors.grey
                         : Colors.black,
                   ),
@@ -165,7 +165,7 @@ class HomePostContainer extends StatelessWidget {
                   ),
                   FaIcon(
                     FontAwesomeIcons.paperPlane,
-                    color: context.read<DarkConfigViewModel>().isDarked
+                    color: ref.watch(darkConfigProvider).isDarked
                         ? Colors.grey
                         : Colors.black,
                   ),
@@ -212,7 +212,7 @@ class HomePostContainer extends StatelessWidget {
         SizedBox(
           width: 500,
           child: Divider(
-            color: context.read<DarkConfigViewModel>().isDarked
+            color: ref.watch(darkConfigProvider).isDarked
                 ? Colors.grey.shade700
                 : Colors.black.withOpacity(0.1),
             thickness: 2.0,

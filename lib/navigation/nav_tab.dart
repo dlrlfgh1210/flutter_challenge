@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
-import 'package:provider/provider.dart';
 
-class NavTab extends StatelessWidget {
+class NavTab extends ConsumerWidget {
   const NavTab({
     super.key,
     required this.isSelected,
@@ -18,12 +18,12 @@ class NavTab extends StatelessWidget {
   final IconData selectedIcon;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Expanded(
       child: GestureDetector(
         onTap: () => onTap(),
         child: Container(
-          color: context.read<DarkConfigViewModel>().isDarked
+          color: ref.watch(darkConfigProvider).isDarked
               ? Colors.black
               : Colors.white,
           child: AnimatedOpacity(
@@ -34,7 +34,7 @@ class NavTab extends StatelessWidget {
               children: [
                 FaIcon(
                   isSelected ? selectedIcon : icon,
-                  color: context.read<DarkConfigViewModel>().isDarked
+                  color: ref.watch(darkConfigProvider).isDarked
                       ? Colors.white
                       : Colors.black,
                 ),

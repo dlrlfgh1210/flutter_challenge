@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
-import 'package:provider/provider.dart';
 
-class SearchContainer extends StatefulWidget {
+class SearchContainer extends ConsumerStatefulWidget {
   final String nickName, subName, followers;
   final dynamic myImage;
   const SearchContainer({
@@ -15,10 +15,10 @@ class SearchContainer extends StatefulWidget {
   });
 
   @override
-  State<SearchContainer> createState() => _SearchContainerState();
+  SearchContainerState createState() => SearchContainerState();
 }
 
-class _SearchContainerState extends State<SearchContainer> {
+class SearchContainerState extends ConsumerState<SearchContainer> {
   bool _isSelected = false;
 
   void _onTap() {
@@ -85,13 +85,13 @@ class _SearchContainerState extends State<SearchContainer> {
                       width: 1,
                       color: _isSelected
                           ? Colors.white
-                          : context.read<DarkConfigViewModel>().isDarked
+                          : ref.watch(darkConfigProvider).isDarked
                               ? Colors.grey
                               : Colors.grey.shade600,
                     ),
                     color: _isSelected
                         ? Colors.grey.shade300
-                        : context.read<DarkConfigViewModel>().isDarked
+                        : ref.watch(darkConfigProvider).isDarked
                             ? Colors.grey
                             : Colors.white,
                   ),
@@ -101,7 +101,7 @@ class _SearchContainerState extends State<SearchContainer> {
                     style: TextStyle(
                       color: _isSelected
                           ? Colors.white
-                          : context.read<DarkConfigViewModel>().isDarked
+                          : ref.watch(darkConfigProvider).isDarked
                               ? null
                               : Colors.black,
                       fontWeight: FontWeight.bold,
@@ -114,9 +114,8 @@ class _SearchContainerState extends State<SearchContainer> {
           subtitle: Text(
             widget.followers,
             style: TextStyle(
-              color: context.read<DarkConfigViewModel>().isDarked
-                  ? null
-                  : Colors.black,
+              color:
+                  ref.watch(darkConfigProvider).isDarked ? null : Colors.black,
               fontWeight: FontWeight.bold,
               fontSize: 20,
             ),
@@ -125,7 +124,7 @@ class _SearchContainerState extends State<SearchContainer> {
         SizedBox(
           width: 500,
           child: Divider(
-            color: context.read<DarkConfigViewModel>().isDarked
+            color: ref.watch(darkConfigProvider).isDarked
                 ? Colors.grey
                 : Colors.black.withOpacity(0.1),
             thickness: 2.0,

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
-import 'package:provider/provider.dart';
 
-class ProfileUser extends StatelessWidget {
+class ProfileUser extends ConsumerWidget {
   const ProfileUser({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       height: 230,
       child: Column(
@@ -22,7 +22,7 @@ class ProfileUser extends StatelessWidget {
                     "Jane",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: context.read<DarkConfigViewModel>().isDarked
+                      color: ref.watch(darkConfigProvider).isDarked
                           ? null
                           : Colors.black,
                       fontSize: 30,
@@ -34,7 +34,7 @@ class ProfileUser extends StatelessWidget {
                         "jane_mobbin",
                         style: TextStyle(
                           fontWeight: FontWeight.w300,
-                          color: context.read<DarkConfigViewModel>().isDarked
+                          color: ref.watch(darkConfigProvider).isDarked
                               ? null
                               : Colors.black,
                           fontSize: 20,
@@ -80,9 +80,8 @@ class ProfileUser extends StatelessWidget {
             "Plant enthusiast!",
             style: TextStyle(
               fontWeight: FontWeight.w300,
-              color: context.read<DarkConfigViewModel>().isDarked
-                  ? null
-                  : Colors.black,
+              color:
+                  ref.watch(darkConfigProvider).isDarked ? null : Colors.black,
               fontSize: 20,
             ),
           ),
@@ -93,9 +92,8 @@ class ProfileUser extends StatelessWidget {
             "2 Followers",
             style: TextStyle(
               fontWeight: FontWeight.w300,
-              color: context.read<DarkConfigViewModel>().isDarked
-                  ? null
-                  : Colors.grey,
+              color:
+                  ref.watch(darkConfigProvider).isDarked ? null : Colors.grey,
               fontSize: 20,
             ),
           ),
@@ -111,7 +109,7 @@ class ProfileUser extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: context.read<DarkConfigViewModel>().isDarked
+                    color: ref.watch(darkConfigProvider).isDarked
                         ? Colors.grey
                         : Colors.white,
                     border: Border.all(
@@ -122,7 +120,7 @@ class ProfileUser extends StatelessWidget {
                   "Edit profile",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: context.read<DarkConfigViewModel>().isDarked
+                    color: ref.watch(darkConfigProvider).isDarked
                         ? Colors.white
                         : Colors.black,
                     fontWeight: FontWeight.w600,
@@ -139,7 +137,7 @@ class ProfileUser extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: context.read<DarkConfigViewModel>().isDarked
+                    color: ref.watch(darkConfigProvider).isDarked
                         ? Colors.grey
                         : Colors.white,
                     border: Border.all(
@@ -150,7 +148,7 @@ class ProfileUser extends StatelessWidget {
                   "Share profile",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: context.read<DarkConfigViewModel>().isDarked
+                    color: ref.watch(darkConfigProvider).isDarked
                         ? Colors.white
                         : Colors.black,
                     fontWeight: FontWeight.w600,
