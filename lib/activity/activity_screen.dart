@@ -2,7 +2,8 @@ import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_flutter_challenge/activity/activity_container.dart';
-import 'package:nomad_flutter_challenge/dark_mode.dart';
+import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
+import 'package:provider/provider.dart';
 
 final tabs = [
   "All",
@@ -33,12 +34,17 @@ class _ActivityScreenState extends State<ActivityScreen> {
             contentPadding: const EdgeInsets.symmetric(horizontal: 25),
             unselectedBorderColor: Colors.grey.shade500,
             borderWidth: 1,
-            backgroundColor:
-                isDarkMode(context) ? Colors.grey.shade400 : Colors.black,
+            backgroundColor: context.read<DarkConfigViewModel>().isDarked
+                ? Colors.grey.shade400
+                : Colors.black,
             unselectedBackgroundColor:
-                isDarkMode(context) ? Colors.black : Colors.white,
+                context.read<DarkConfigViewModel>().isDarked
+                    ? Colors.black
+                    : Colors.white,
             unselectedLabelStyle: TextStyle(
-              color: isDarkMode(context) ? Colors.white : Colors.black,
+              color: context.read<DarkConfigViewModel>().isDarked
+                  ? Colors.white
+                  : Colors.black,
               fontWeight: FontWeight.w600,
             ),
             labelStyle: const TextStyle(
@@ -178,7 +184,9 @@ class _ActivityScreenState extends State<ActivityScreen> {
                       ),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: isDarkMode(context) ? null : Colors.white,
+                          color: context.read<DarkConfigViewModel>().isDarked
+                              ? null
+                              : Colors.white,
                           border: Border.all(
                             width: 1,
                             color: Colors.grey,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nomad_flutter_challenge/dark_mode.dart';
+import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
+import 'package:provider/provider.dart';
 
 class SearchContainer extends StatefulWidget {
   final String nickName, subName, followers;
@@ -84,13 +85,13 @@ class _SearchContainerState extends State<SearchContainer> {
                       width: 1,
                       color: _isSelected
                           ? Colors.white
-                          : isDarkMode(context)
+                          : context.read<DarkConfigViewModel>().isDarked
                               ? Colors.grey
                               : Colors.grey.shade600,
                     ),
                     color: _isSelected
                         ? Colors.grey.shade300
-                        : isDarkMode(context)
+                        : context.read<DarkConfigViewModel>().isDarked
                             ? Colors.grey
                             : Colors.white,
                   ),
@@ -100,7 +101,7 @@ class _SearchContainerState extends State<SearchContainer> {
                     style: TextStyle(
                       color: _isSelected
                           ? Colors.white
-                          : isDarkMode(context)
+                          : context.read<DarkConfigViewModel>().isDarked
                               ? null
                               : Colors.black,
                       fontWeight: FontWeight.bold,
@@ -113,7 +114,9 @@ class _SearchContainerState extends State<SearchContainer> {
           subtitle: Text(
             widget.followers,
             style: TextStyle(
-              color: isDarkMode(context) ? null : Colors.black,
+              color: context.read<DarkConfigViewModel>().isDarked
+                  ? null
+                  : Colors.black,
               fontWeight: FontWeight.bold,
               fontSize: 20,
             ),
@@ -122,7 +125,7 @@ class _SearchContainerState extends State<SearchContainer> {
         SizedBox(
           width: 500,
           child: Divider(
-            color: isDarkMode(context)
+            color: context.read<DarkConfigViewModel>().isDarked
                 ? Colors.grey
                 : Colors.black.withOpacity(0.1),
             thickness: 2.0,

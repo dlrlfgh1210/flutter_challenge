@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nomad_flutter_challenge/dark_mode.dart';
 import 'package:nomad_flutter_challenge/search/search_container.dart';
+import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
+import 'package:provider/provider.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -32,7 +33,9 @@ class _SearchScreenState extends State<SearchScreen> {
         title: Text(
           "Search",
           style: TextStyle(
-            color: isDarkMode(context) ? Colors.white : Colors.black,
+            color: context.read<DarkConfigViewModel>().isDarked
+                ? Colors.white
+                : Colors.black,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),

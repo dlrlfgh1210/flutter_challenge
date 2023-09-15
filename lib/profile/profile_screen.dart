@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nomad_flutter_challenge/home/home_post_container.dart';
 import 'package:nomad_flutter_challenge/profile/profile_tab_bar.dart';
 import 'package:nomad_flutter_challenge/profile/profile_user.dart';
-import 'package:nomad_flutter_challenge/setting/setting_screen.dart';
+import 'package:nomad_flutter_challenge/setting/views/setting_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

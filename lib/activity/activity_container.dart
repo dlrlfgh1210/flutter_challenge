@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nomad_flutter_challenge/dark_mode.dart';
+import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
+import 'package:provider/provider.dart';
 
 class ActivityContainer extends StatelessWidget {
   final dynamic profileImage;
@@ -92,7 +93,9 @@ class ActivityContainer extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
             style: TextStyle(
-              color: isDarkMode(context) ? null : Colors.black,
+              color: context.read<DarkConfigViewModel>().isDarked
+                  ? null
+                  : Colors.black,
             ),
           ),
           trailing: followingBox,
@@ -100,7 +103,9 @@ class ActivityContainer extends StatelessWidget {
         SizedBox(
           width: 500,
           child: Divider(
-            color: isDarkMode(context) ? null : Colors.black.withOpacity(0.1),
+            color: context.read<DarkConfigViewModel>().isDarked
+                ? null
+                : Colors.black.withOpacity(0.1),
             thickness: 2.0,
           ),
         ),

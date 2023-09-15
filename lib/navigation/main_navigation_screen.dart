@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_flutter_challenge/activity/activity_screen.dart';
-import 'package:nomad_flutter_challenge/dark_mode.dart';
 import 'package:nomad_flutter_challenge/home/home_screen.dart';
 import 'package:nomad_flutter_challenge/home/write_bottom_sheet.dart';
 import 'package:nomad_flutter_challenge/navigation/nav_tab.dart';
 import 'package:nomad_flutter_challenge/profile/profile_screen.dart';
 import 'package:nomad_flutter_challenge/search/search_screen.dart';
+import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
+import 'package:provider/provider.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   static const String routeName = "mainNavigation";
@@ -39,7 +40,6 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = isDarkMode(context);
     return Scaffold(
       body: Stack(
         children: [
@@ -66,7 +66,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        color: isDark ? Colors.black : Colors.white,
+        color: context.read<DarkConfigViewModel>().isDarked
+            ? Colors.black
+            : Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Row(

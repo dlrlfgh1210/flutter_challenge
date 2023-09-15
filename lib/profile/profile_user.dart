@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nomad_flutter_challenge/dark_mode.dart';
+import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
+import 'package:provider/provider.dart';
 
 class ProfileUser extends StatelessWidget {
   const ProfileUser({super.key});
@@ -21,7 +22,9 @@ class ProfileUser extends StatelessWidget {
                     "Jane",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: isDarkMode(context) ? null : Colors.black,
+                      color: context.read<DarkConfigViewModel>().isDarked
+                          ? null
+                          : Colors.black,
                       fontSize: 30,
                     ),
                   ),
@@ -31,7 +34,9 @@ class ProfileUser extends StatelessWidget {
                         "jane_mobbin",
                         style: TextStyle(
                           fontWeight: FontWeight.w300,
-                          color: isDarkMode(context) ? null : Colors.black,
+                          color: context.read<DarkConfigViewModel>().isDarked
+                              ? null
+                              : Colors.black,
                           fontSize: 20,
                         ),
                       ),
@@ -75,7 +80,9 @@ class ProfileUser extends StatelessWidget {
             "Plant enthusiast!",
             style: TextStyle(
               fontWeight: FontWeight.w300,
-              color: isDarkMode(context) ? null : Colors.black,
+              color: context.read<DarkConfigViewModel>().isDarked
+                  ? null
+                  : Colors.black,
               fontSize: 20,
             ),
           ),
@@ -86,7 +93,9 @@ class ProfileUser extends StatelessWidget {
             "2 Followers",
             style: TextStyle(
               fontWeight: FontWeight.w300,
-              color: isDarkMode(context) ? null : Colors.grey,
+              color: context.read<DarkConfigViewModel>().isDarked
+                  ? null
+                  : Colors.grey,
               fontSize: 20,
             ),
           ),
@@ -102,7 +111,9 @@ class ProfileUser extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: isDarkMode(context) ? Colors.grey : Colors.white,
+                    color: context.read<DarkConfigViewModel>().isDarked
+                        ? Colors.grey
+                        : Colors.white,
                     border: Border.all(
                       width: 1,
                       color: Colors.grey,
@@ -111,7 +122,9 @@ class ProfileUser extends StatelessWidget {
                   "Edit profile",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: isDarkMode(context) ? Colors.white : Colors.black,
+                    color: context.read<DarkConfigViewModel>().isDarked
+                        ? Colors.white
+                        : Colors.black,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -126,7 +139,9 @@ class ProfileUser extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: isDarkMode(context) ? Colors.grey : Colors.white,
+                    color: context.read<DarkConfigViewModel>().isDarked
+                        ? Colors.grey
+                        : Colors.white,
                     border: Border.all(
                       width: 1,
                       color: Colors.grey,
@@ -135,7 +150,9 @@ class ProfileUser extends StatelessWidget {
                   "Share profile",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: isDarkMode(context) ? Colors.white : Colors.black,
+                    color: context.read<DarkConfigViewModel>().isDarked
+                        ? Colors.white
+                        : Colors.black,
                     fontWeight: FontWeight.w600,
                   ),
                 ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_flutter_challenge/privacy/privacy_screen.dart';
+import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
+import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   static const String routeName = "settings";
@@ -28,6 +30,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       body: Column(
         children: [
+          SwitchListTile(
+            value: context.watch<DarkConfigViewModel>().isDarked,
+            onChanged: (value) =>
+                context.read<DarkConfigViewModel>().setDarked(value),
+            title: Row(
+              children: [
+                FaIcon(
+                  context.read<DarkConfigViewModel>().isDarked
+                      ? FontAwesomeIcons.moon
+                      : Icons.sunny,
+                ),
+                const SizedBox(
+                  width: 30,
+                ),
+                Text(
+                  context.read<DarkConfigViewModel>().isDarked
+                      ? "Dark Mode"
+                      : "Light Mode",
+                ),
+              ],
+            ),
+          ),
           const ListTile(
             leading: FaIcon(
               FontAwesomeIcons.userPlus,
