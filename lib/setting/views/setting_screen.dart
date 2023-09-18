@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nomad_flutter_challenge/authentication/repos/authentication_repo.dart';
+import 'package:nomad_flutter_challenge/authentication/views/login/login_screen.dart';
 import 'package:nomad_flutter_challenge/privacy/privacy_screen.dart';
 import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
 
@@ -115,7 +117,10 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () => Navigator.of(context).pop(),
+                      onPressed: () {
+                        ref.read(authRepo).signOut();
+                        context.goNamed(LogInScreen.routeName);
+                      },
                       child: const Text(
                         "Yes",
                         style: TextStyle(

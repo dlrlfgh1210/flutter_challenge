@@ -1,11 +1,14 @@
 import 'package:easy_rich_text/easy_rich_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nomad_flutter_challenge/create_account/create_account_screen.dart';
+import 'package:nomad_flutter_challenge/authentication/views/sign_up/sign_up_screen.dart';
+import 'package:nomad_flutter_challenge/authentication/views/login/login_screen.dart';
 import 'package:nomad_flutter_challenge/widget/initial_container.dart';
 import 'package:nomad_flutter_challenge/initial/initial_warning.dart';
 
 class InitialScreen extends StatefulWidget {
+  static const String routeName = "Initial";
+  static const String routeURL = "/initial";
   const InitialScreen({super.key});
 
   @override
@@ -13,10 +16,18 @@ class InitialScreen extends StatefulWidget {
 }
 
 class _InitialScreenState extends State<InitialScreen> {
-  void onCreateTap(BuildContext context) {
+  void onSignUpTap(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => const CreateAccountScreen(),
+        builder: (context) => const SignUpScreen(),
+      ),
+    );
+  }
+
+  void onLogInTap(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const LogInScreen(),
       ),
     );
   }
@@ -83,7 +94,7 @@ class _InitialScreenState extends State<InitialScreen> {
                 height: 10,
               ),
               GestureDetector(
-                onTap: () => onCreateTap(context),
+                onTap: () => onSignUpTap(context),
                 child: const InitialContainer(
                   method: "Create account",
                   bgColor: Colors.black,
@@ -97,23 +108,26 @@ class _InitialScreenState extends State<InitialScreen> {
               const SizedBox(
                 height: 80,
               ),
-              EasyRichText(
-                "Have an account already?  Log in",
-                defaultStyle: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                  color: Colors.black,
-                ),
-                patternList: [
-                  EasyRichTextPattern(
-                    targetString: "Log in",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.blue.shade500,
-                    ),
+              GestureDetector(
+                onTap: () => onLogInTap(context),
+                child: EasyRichText(
+                  "Have an account already?  Log in",
+                  defaultStyle: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.black,
                   ),
-                ],
+                  patternList: [
+                    EasyRichTextPattern(
+                      targetString: "Log in",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.blue.shade500,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nomad_flutter_challenge/firebase_options.dart';
 import 'package:nomad_flutter_challenge/router.dart';
 import 'package:nomad_flutter_challenge/setting/repos/dark_config_repo.dart';
 import 'package:nomad_flutter_challenge/setting/view_models/dark_config_view_model.dart';
@@ -8,6 +10,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   GoRouter.optionURLReflectsImperativeAPIs = true;
   final preferences = await SharedPreferences.getInstance();
   final repository = DarkConfigRepository(preferences);
@@ -30,7 +35,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
-      routerConfig: myRouter,
+      routerConfig: ref.watch(myRouterProvider),
       themeMode: ref.watch(darkConfigProvider).isDarked
           ? ThemeMode.dark
           : ThemeMode.light,

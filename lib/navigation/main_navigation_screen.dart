@@ -24,7 +24,7 @@ class MainNavigationScreen extends ConsumerStatefulWidget {
 
 class MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
   final List<String> _tabs = [
-    "",
+    "home",
     "search",
     "xxxx",
     "activity",
