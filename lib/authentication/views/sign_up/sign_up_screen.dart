@@ -97,10 +97,8 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
         isPasswordValid() != null ||
         passwordCheck.isEmpty ||
         isPasswordCheckValid() != null) return;
-    ref.read(signUpForm.notifier).state = {"email": email};
-    final state = ref.read(signUpForm.notifier).state;
     ref.read(signUpForm.notifier).state = {
-      ...state,
+      "email": email,
       "password": password,
     };
     ref.read(signUpProvider.notifier).signUp(context);
@@ -153,7 +151,8 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                 child: ChangeColorButton(
                   disabled: email.isEmpty ||
                       password.isEmpty ||
-                      passwordCheck.isEmpty,
+                      passwordCheck.isEmpty ||
+                      ref.watch(signUpProvider).isLoading,
                   buttonName: 'Sign Up',
                   buttonSize: 1,
                 ),

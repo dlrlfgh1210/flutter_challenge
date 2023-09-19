@@ -1,23 +1,22 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_flutter_challenge/authentication/repos/authentication_repo.dart';
-import 'package:nomad_flutter_challenge/authentication/views/sign_up_screen.dart';
-import 'package:nomad_flutter_challenge/create_account/create_account_screen.dart';
+import 'package:nomad_flutter_challenge/authentication/views/sign_up/sign_up_screen.dart';
 import 'package:nomad_flutter_challenge/initial/initial_screen.dart';
-import 'package:nomad_flutter_challenge/login/login_screen.dart';
+import 'package:nomad_flutter_challenge/authentication/views/login/login_screen.dart';
 import 'package:nomad_flutter_challenge/navigation/main_navigation_screen.dart';
 import 'package:nomad_flutter_challenge/privacy/privacy_screen.dart';
 import 'package:nomad_flutter_challenge/setting/views/setting_screen.dart';
 
 final myRouterProvider = Provider((ref) {
   return GoRouter(
-    initialLocation: InitialScreen.routeURL,
+    initialLocation: "/home",
     redirect: (context, state) {
       final isLoggedIn = ref.read(authRepo).isLoggedIn;
       if (!isLoggedIn) {
         if (state.matchedLocation != SignUpScreen.routeURL &&
-            state.matchedLocation != InitialScreen.routeURL) {
-          return SignUpScreen.routeURL;
+            state.matchedLocation != LogInScreen.routeURL) {
+          return InitialScreen.routeURL;
         }
       }
       return null;
@@ -36,7 +35,7 @@ final myRouterProvider = Provider((ref) {
       GoRoute(
         name: SignUpScreen.routeName,
         path: SignUpScreen.routeURL,
-        builder: (context, state) => const CreateAccountScreen(),
+        builder: (context, state) => const SignUpScreen(),
       ),
       GoRoute(
         path: "/:tab(home|search|activity|profile)",
